@@ -1,0 +1,5 @@
+/target
+/gnu-mingw
+/msvc
+Cargo.lock
+SDL2.dll

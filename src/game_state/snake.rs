@@ -1,11 +1,13 @@
 use magneto::Context;
 use magneto::graphics;
+use graphics::Color;
 
 use sdl2::keyboard::Keycode;
 
 use crate::GRID_SIZE;
 use crate::TILE_SIZE;
 use crate::GRID_BORDER;
+use crate::GRID_BORDER_TOP;
 use crate::GRID_PIXEL_SIZE;
 use crate::SCREEN_SIZE;
 use super::grid::Direction;
@@ -46,19 +48,19 @@ impl Snake {
         graphics::draw_rect(
             ctx,
             1.0 + GRID_BORDER + self.segments.front().unwrap().x as f32 * TILE_SIZE,
-            1.0 + GRID_BORDER + self.segments.front().unwrap().y as f32 * TILE_SIZE,
+            1.0 + GRID_BORDER_TOP + self.segments.front().unwrap().y as f32 * TILE_SIZE,
             TILE_SIZE - 1.0,
             TILE_SIZE - 1.0,
-            (29.0 / 255.0, 92.0 / 255.0, 42.0 / 255.0)
-        );
+            (29, 92, 42).into(),
+        );  
         for seg in self.segments.iter().skip(1) {
             graphics::draw_rect(
                 ctx,
                 1.0 + GRID_BORDER + seg.x as f32 * TILE_SIZE,
-                1.0 + GRID_BORDER + seg.y as f32 * TILE_SIZE,
+                1.0 + GRID_BORDER_TOP + seg.y as f32 * TILE_SIZE,
                 TILE_SIZE - 1.0,
                 TILE_SIZE - 1.0,
-                (50.0 / 255.0, 120.0 / 255.0, 58.0 / 255.0)
+                (50, 120, 58).into(),
             );
         }
     }
